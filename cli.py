@@ -24,13 +24,15 @@ def add_tasks():
     if not category:
         category = Category(name=category_name)
         session.add(category)
+        session.commit()
         
         
     task = Task(
-        name = name,
+        title = name,
         description = description,
-        due = datetime.striptime(due, "%Y-%m-%d"),
-        category = category)
+        due = datetime.strptime(due, "%Y-%m-%d"),
+        category = category
+        )
     
     session.add(task)
     session.commit()
@@ -42,7 +44,7 @@ def view_tasks():
         print("No tasks found.")
         return
     for t in tasks:
-         print(f"[{t.id}] - {t.name} - {t.status} - {t.category.name} - (Due{t.due})")
+         print(f"[{t.id}] - {t.title} - {t.status} - {t.category.name} - (Due{t.due})")
          
 def update_tasks():
     task_id = int(input("Task ID to update: "))

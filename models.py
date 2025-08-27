@@ -4,13 +4,14 @@ from sqlalchemy import Integer, String, Date, Column, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
+#Tables
 class Category(Base):
     __tablename__ = "categories"
     
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True, nullable=False)
     
-    tasks = relationship("Task", "category")
+    tasks = relationship("Task", back_populates="category")
     
 class Task(Base):
     __tablename__ = "tasks"
@@ -24,6 +25,5 @@ class Task(Base):
     category_id = Column(Integer, ForeignKey("categories.id"))
     category = relationship("Category", back_populates="tasks")
     
-    if __name__ == "__main__":
-        from database import engine
-        Base.metadata.create_all(engine)
+class User(Base):
+    __tablename__ = "users"    
