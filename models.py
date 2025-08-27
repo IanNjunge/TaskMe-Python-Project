@@ -26,4 +26,9 @@ class Task(Base):
     category = relationship("Category", back_populates="tasks")
     
 class User(Base):
-    __tablename__ = "users"    
+    __tablename__ = "users"
+    
+    id = Column(Integer, primary_key=True)
+    username = Column(String, unique=True, nullable=False)
+    
+    tasks = relationship("Task", back_populates="user")    
