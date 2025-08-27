@@ -40,9 +40,19 @@ def view_tasks():
     tasks = session.query(Task).all()
     if not tasks:
         print("No tasks found.")
-        #return
-    #for t in tasks:
-         #print(f"[{t.id}] - {t.name} - {t.status} - {t.category.name} - (Due{t.due})") 
+        return
+    for t in tasks:
+         print(f"[{t.id}] - {t.name} - {t.status} - {t.category.name} - (Due{t.due})")
+         
+def update_task():
+    task_id = int(input("Task ID to update: "))
+    task = session.query(Task).get(task_id)    
+    if task:
+        task.status = input("(Pending/Done): ")
+        session.commit()     
+        print("Task updated!")
+    else:
+        print("Task not found.")      
         
     
     
