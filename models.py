@@ -25,6 +25,9 @@ class Task(Base):
     category_id = Column(Integer, ForeignKey("categories.id"))
     category = relationship("Category", back_populates="tasks")
     
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship("User", back_populates="tasks") 
+    
 class User(Base):
     __tablename__ = "users"
     

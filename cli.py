@@ -65,7 +65,8 @@ def delete_tasks():
         print("Tasks deleted!")
     else:
         print("Task not found.") 
-
+        
+        
 
 #The main loop
 def main():
