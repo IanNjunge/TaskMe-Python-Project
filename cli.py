@@ -14,7 +14,7 @@ def menu():
     print("4. Delete Task")
     print("5. Exit TaskMe")
     
-def add_task():
+def add_tasks():
     name = input("Task name: ")    
     description = input("Describe task: ")
     due = input("Due date (YYYY-MM-DD): ")
@@ -44,7 +44,7 @@ def view_tasks():
     for t in tasks:
          print(f"[{t.id}] - {t.name} - {t.status} - {t.category.name} - (Due{t.due})")
          
-def update_task():
+def update_tasks():
     task_id = int(input("Task ID to update: "))
     task = session.query(Task).get(task_id)    
     if task:
@@ -54,6 +54,37 @@ def update_task():
     else:
         print("Task not found.")      
         
-    
+def delete_tasks():
+    task_id = int(input("Task ID to delete: "))
+    task = session.query(Task).get(task_id)
+    if task:
+        session.delete(task)
+        session.commit()
+        print("Tasks deleted!")
+    else:
+        print("Task not found.") 
+
+
+#The main loop
+def main():
+    while True:
+        menu()
+        choice = input("Choose: ")
+        if choice == "1":
+            add_tasks()
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            update_tasks()
+        elif choice == "4":
+            delete_tasks()
+        elif choice == "5":
+            print("Exiting.")
+            break
+        else:
+            print("Invalid choice")     
+                     
+if __name__ == "__main__":
+    main()                     
     
      
