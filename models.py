@@ -1,3 +1,5 @@
+#sqlalchemy imports, orm models
+
 from sqlalchemy import Integer, String, Date, Column, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
