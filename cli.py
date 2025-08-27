@@ -20,3 +20,12 @@ def add_task():
     
     category_name = input("Category: ")
     category = session.query(Category).filter_by(name=category_name).first()
+    
+    task = Task()
+    session.add(task)
+    session.commit()
+    print("Task added!")
+    
+def view_tasks():
+    tasks = session.query(Task).all()
+        
