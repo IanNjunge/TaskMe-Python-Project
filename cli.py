@@ -1,7 +1,8 @@
 #main menu for user interactions
-from database import SessionLocal
-from models import Task, Category
+from database import SessionLocal, engine
+from models import Task, Category, Base
 from datetime import datetime
+
 
 session = SessionLocal()
 
