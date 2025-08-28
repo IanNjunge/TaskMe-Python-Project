@@ -3,6 +3,7 @@ from database import SessionLocal, engine
 from models import Task, Category, Base
 from datetime import datetime
 
+Base.metadata.create_all(bind=engine)
 
 session = SessionLocal()
 
