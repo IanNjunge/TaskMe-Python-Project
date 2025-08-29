@@ -4,7 +4,7 @@ from sqlalchemy import Integer, String, Date, Column, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
-#models
+#models(database tables)
 class Category(Base):
     __tablename__ = "categories"
     
