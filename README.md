@@ -11,3 +11,5 @@ TaskMe is a command-line based task manager built using Python and SQLAlchemy.
 2. Run CLI: python cli.py 
 3. Follow prompts.
 
+# Creator
+Created by Ian Njunge ^o^
