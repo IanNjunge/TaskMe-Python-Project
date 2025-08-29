@@ -11,6 +11,7 @@ def menu():
     print("3. Update Task Status")
     print("4. Delete Task")
     print("5. Exit TaskMe")
+    print("6. Logout / Switch User")
 
 #task functions  
 def add_tasks(session, user):
@@ -107,6 +108,9 @@ def main():
         elif choice == "5":
             print("Exiting.")
             break
+        elif choice == "6":
+            print("Logging out...")
+            user = login(session)
         else:
             print("Invalid choice")    
     
