@@ -60,7 +60,7 @@ def update_tasks(session, user):
 def delete_tasks(session, user):
     view_tasks(session, user)
     task_id = int(input("Task ID to delete: "))
-    task = session.query(Task).filter_by(id=task_id, user=user.id).first()
+    task = session.query(Task).filter_by(id=task_id, user_id=user.id).first()
     if task:
         session.delete(task)
         session.commit()
@@ -83,7 +83,7 @@ def login(session):
         session.commit() 
         print(f"Welcome: {user.username}")
     else:    
-        print(f"Welcome back, {user.usermame}!")
+        print(f"Welcome back, {user.username}!")
     
     return user    
 
@@ -98,13 +98,13 @@ def main():
         menu()
         choice = input("Choose: ")
         if choice == "1":
-            add_tasks()
+            add_tasks(session, user)
         elif choice == "2":
-            view_tasks()
+            view_tasks(session, user)
         elif choice == "3":
-            update_tasks()
+            update_tasks(session, user)
         elif choice == "4":
-            delete_tasks()
+            delete_tasks(session, user)
         elif choice == "5":
             print("Exiting.")
             break
